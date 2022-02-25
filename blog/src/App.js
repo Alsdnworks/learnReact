@@ -5,6 +5,8 @@ import Wrapper from "./Wrapper";
 import HelloIf from "./helloIf";
 import Counter from "./counter";
 import InputSample from "./input";
+import InputSamplePH from "./inputPH";
+import InputSampleRF from "./inputSample";
 
 
 function App() {
@@ -77,11 +79,20 @@ function App() {
     </Wrapper>
 
     <h2>7.1 여러 input태그 상태관리</h2>
-    <h3>input placeholder를 설정하여 여러개의 input태그를 관리한다. 
+    <h3>input placeholder를 설정하여 여러개의 input태그를 관리한다.
     <br/>inputPH.js참고</h3>
     <Wrapper>
-      <InputPH/>
+      <InputSamplePH/>
     </Wrapper>
+
+    <h1>8.useRef로 특정 DOM선택하기 </h1>
+    <h3>input placeholder를 설정하여 여러개의 input태그를 관리한다.
+    <br/>inputSample.js참고</h3>
+    
+    <Wrapper>
+      <InputSampleRF/>
+    </Wrapper>
+
     </>
   );
 }
