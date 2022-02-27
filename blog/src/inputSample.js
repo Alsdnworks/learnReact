@@ -22,28 +22,19 @@ function InputSampleRF(){
             name:'',
             nickname:''
         });
+        nameInput.current.focus();
     }
 
     return(
         <div>
-            <input
-            name="name"
-            placeholder="이름"
-            onChange={onChange}
-            value={name}
-            ref={nameInput}
-            />
-            <input
-            name="nickname"
-            placeholder="닉네임"
-            onChange={onChange}
-            value={nickname}
-            />
+            <input name="name" placeholder="이름" onChange={onChange} value={name} ref={nameInput}/>
+            <input name="nickname" placeholder="닉네임" onChange={onChange} value={nickname}/>
             <button onClick={onReset}> reset </button>
-            <div>
-                <b>value</b>
-                {name}({nickname})
-            </div>
+                <div>
+                <b>value</b><br/>
+                name &nbsp;&nbsp; {name}<br/>
+                nickname &nbsp;&nbsp; {nickname}
+                </div>
         </div>
     );
 }

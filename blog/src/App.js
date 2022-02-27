@@ -7,6 +7,9 @@ import Counter from "./counter";
 import InputSample from "./input";
 import InputSamplePH from "./inputPH";
 import InputSampleRF from "./inputSample";
+import UserList from "./UserList";
+import UserListMap from "./UserListMap";
+import Orign from "./UserListData";
 
 
 function App() {
@@ -86,13 +89,42 @@ function App() {
     </Wrapper>
 
     <h1>8.useRef로 특정 DOM선택하기 </h1>
-    <h3>input placeholder를 설정하여 여러개의 input태그를 관리한다.
-    <br/>inputSample.js참고</h3>
-    
+    <h3>useRef을 사용하여 특정 기능 작동시 다른 DOM을 제어 가능하다. 
+    <br/>본 예제는 리셋시 nameInput을 포커싱한다 (inputSample.js-&gt; Line 25:) 
+    <br/>inputSample.js참고</h3>    
     <Wrapper>
       <InputSampleRF/>
     </Wrapper>
 
+    <h1>9.배열 렌더링하기 </h1>
+    <h3>정적인 배열과 동적인 배열을 렌더링하는 방법을 알아본다. 
+    <br/>본 예제는 정적인 배열을 렌더링하고 동적인 배열을 map을 통해 줄력한다.  </h3>
+ 
+    <h2>9.1. 정적인 배열 렌더링</h2>
+    <h3>
+    UserList.js참고</h3>
+    <Wrapper>
+      <UserList/>
+    </Wrapper>
+
+    <h2>9.2. 동적인 배열 렌더링</h2>
+    <h3>UserListMap.js참고</h3>
+    <Wrapper>
+    <h1>ListMap</h1>
+    <h3>It renders dynamic JS array by map, func.</h3>
+      <UserListMap/>
+    </Wrapper>
+
+    <h2>10. 컴포넌트 내의 변수를 useRef HOOK를 사용해 관리하기</h2>
+    <h3>기존에 DOM을 선택하기위해 useRef를 사용하는 예제를 만들었다.
+       본 예제에서는 컴포넌트 내에서 사용하는 변수를 useRef를 사용하여 관리할것이다. 
+      <br/>UserListData.js, UserListRef.js참고
+    </h3>
+    <Wrapper>
+    <h1>List</h1>
+    <h3>루삥뽕</h3>
+      <Orign/>
+    </Wrapper>    
     </>
   );
 }
