@@ -1,40 +1,91 @@
-import React,{useRef} from "react";
+import React,{useRef, useState} from "react";
 import UserListRef from "./UserListRef";
-
-//참고:
-//useRef는 일반적인 자바스크립트 객체입니다 즉 heap 영역에 저장됩니다
-//그래서 어플리케이션이 종료되거나 가비지 컬렉팅 될 때 까지 참조할 때 마다 같은 메모리 주소를 가지게 되고
-//같은 메모리 주소를 가지기 때문에 === 연산이 항상 true를 반환하고, 값이 바뀌어도 리렌더링 되지 않습니다.
-//하지만 함수 컴포넌트 내부에 변수를 선언한다면, 렌더링 될 때마다 값이 초기화 됩니다.
-//그래서 해당 방법을 지양하는 것 같습니다 :)
+import CreateUser from "./CreateUser";
 
 
 function Orign(){
-const nextId =useRef(4);
+//useState를 사용하여 입력값 관리
+const [inputs, setInputs] = useState({
+  username:'',
+  email:''
+});  
 //useref을 사용할때 값을 넣어주면 current의 기본값이 된다.
-const onCreate =()=>{
+const nextId =useRef(4);
+const {username,email} = inputs;
 
+const [users,setUsers] = useState([
+    {
+      id: 1,
+      username: 'first',
+      email: 'id1',
+      active: true
+    },
+    {
+      id: 2,
+      username: 'second',
+      email: 'id2',
+      active: false
+    },
+    {
+      id: 3,
+      username: 'third',
+      email: 'id3',
+      active: true
+    }
+]);
+
+const onCreate =()=>{
+  const user = {
+    id:nextId.current,
+    username,
+    email
+  };
+  setUsers(users.concat(user));
+  setInputs({
+    username:'',
+    email:''
+  });
     nextId.current +=1;
 };
 
-const users = [
-    {
-        id: 1,
-        username: 'first',
-        email: 'id1'
-      },
-      {
-        id: 2,
-        username: 'second',
-        email: 'id2'
-      },
-      {
-        id: 3,
-        username: 'third',
-        email: 'id3'
-      }
-];
+const onRemove=id=>{
+    // user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+    // = user.id 가 id 인 것을 제거함
+    setUsers(users.filter(user=>user.id!==id));
+};
 
-return <UserListRef users={users}/>;
+const onChange = e => {
+    // e.target.name은 이벤트가 발생한 객체의 name 속성값
+  const { name, value } = e.target;
+  setInputs({
+    ...inputs,
+    [name]:value
+  });
+};
+
+const onToggle = id => {
+    //foreach로 모든 변수를 호출함과 같이 map을 사용하여 간소화. UserListMap에서 한것과 같다
+  setUsers(
+    users.map(user =>
+      user.id === id ? { ...user, active: !user.active } : user
+    )
+  );
+};
+
+return (
+  <>
+  <CreateUser
+    username={username}
+    email={email}
+    onChange={onChange}
+    onCreate={onCreate}
+  />
+  <UserListRef 
+    users={users} 
+    onRemove={onRemove} 
+    onToggle={onToggle}/>
+  </>
+  );
 }
+
 export default Orign;

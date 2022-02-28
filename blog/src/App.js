@@ -13,8 +13,19 @@ import Orign from "./UserListData";
 
 
 function App() {
+  //참고:
+  //jsx 외부에서 정의되어진 event hander나 callback로 parameter를 pass할 때 arrow function을 씁니다.
+
+  //참고:
+  //useRef는 일반적인 자바스크립트 객체입니다 즉 heap 영역에 저장됩니다
+  //그래서 어플리케이션이 종료되거나 가비지 컬렉팅 될 때 까지 참조할 때 마다 같은 메모리 주소를 가지게 되고
+  //같은 메모리 주소를 가지기 때문에 === 연산이 항상 true를 반환하고, 값이 바뀌어도 리렌더링 되지 않습니다.
+  //하지만 함수 컴포넌트 내부에 변수를 선언한다면, 렌더링 될 때마다 값이 초기화 됩니다.
+  //그래서 해당 방법을 지양하는 것 같습니다 :)
+
   //바벨을 통해 JSX를 JS로 변환된다. 그 과정은 자동!
   //자바스크립트 변수선언, 참고로 JSX내에서는 주석의 형태가 다르다. 복잡하니까 일단 둘다 외우고 안되면 바꿔!!
+  
   const foo="이건 foo변수의 내용입니다";
   
   const style={
@@ -110,21 +121,22 @@ function App() {
     <h2>9.2. 동적인 배열 렌더링</h2>
     <h3>UserListMap.js참고</h3>
     <Wrapper>
-    <h1>ListMap</h1>
+    <h1>List_Map</h1>
     <h3>It renders dynamic JS array by map, func.</h3>
       <UserListMap/>
     </Wrapper>
 
     <h2>10. 컴포넌트 내의 변수를 useRef HOOK를 사용해 관리하기</h2>
-    <h3>기존에 DOM을 선택하기위해 useRef를 사용하는 예제를 만들었다.
-       본 예제에서는 컴포넌트 내에서 사용하는 변수를 useRef를 사용하여 관리할것이다. 
-      <br/>UserListData.js, UserListRef.js참고
+    <h3>기존에 DOM을 선택하기위해 useRef를 사용하는 예제를 만들었다.<br/>
+       본 예제에서는 컴포넌트 내에서 사용하는 변수를 useRef를 사용하여<br/> 
+       간단한 C.U.R.D.를 구현해본다. 
+      <br/>UserListData.js(UserListRef.js, CreateUser.js)참고
     </h3>
     <Wrapper>
-    <h1>List</h1>
-    <h3>루삥뽕</h3>
+    <h1>EditList</h1>
+    <h3>lets do it</h3>
       <Orign/>
-    </Wrapper>    
+    </Wrapper>
     </>
   );
 }
