@@ -63,7 +63,6 @@ function countActiveUsers(users){
   return users.filter(user=>user.active).length;
 }
 
-
 //useMemo를 사용하여 dep의 값이 바뀔때만 호출된다
 const count=useMemo(()=>countActiveUsers(users),[users]);
 //useref을 사용할때 값을 넣어주면 current의 기본값이 된다.

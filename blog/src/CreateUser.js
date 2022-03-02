@@ -1,6 +1,6 @@
-import React from "react";
+import React,{memo} from "react";
 
-function CreateUser({username,email,onChange,onCreate}){
+const CreateUser = ({username,email,onChange,onCreate}) => {
     return(
         <div>
                 <input 
@@ -20,4 +20,4 @@ function CreateUser({username,email,onChange,onCreate}){
         </div>     
     );
 }
-export default CreateUser;
+export default memo(CreateUser);
