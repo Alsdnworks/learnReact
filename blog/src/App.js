@@ -1,5 +1,6 @@
 import React from "react";
 import Hello from "./hello";
+import HelloClass from "./helloClass";
 import './App.css';
 import Wrapper from "./Wrapper";
 import HelloIf from "./helloIf";
@@ -38,11 +39,11 @@ function App() {
   return (
     //<></>는 프레그먼트라고 하며 두개 이상의 태그를 사용할때 꼭 묶어줘야한다
     <>
-
+    <h1>IT'S REACT</h1><br/>
     <h1>1. 컴포넌트의 사용</h1>
     <h3>임포트한 hello.js의 Hello함수를 호출한다 단일 태그를 사용할때는 &lt; foobar /&gt;의 형태로 표기한다.</h3>
 
-      <Hello />
+      <HelloClass />
       <div>새로운 시작이야! HELLO REACT</div>
 
     <h1>2. 변수의 사용</h1>
